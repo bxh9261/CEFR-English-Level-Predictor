@@ -1,0 +1,23 @@
+ModuleNotFoundError: No module named 'textstat'
+Traceback:
+
+File "C:\Users\15856\anaconda3\envs\Streamlit\lib\site-packages\streamlit\runtime\scriptrunner\script_runner.py", line 565, in _run_script
+    exec(code, module.__dict__)
+File "C:\Users\15856\Documents\CEFR-English-Level-Predictor\CEFR_Predictor.py", line 83, in <module>
+    model = load_model()
+File "C:\Users\15856\Documents\CEFR-English-Level-Predictor\CEFR_Predictor.py", line 13, in load_model
+    return Model("cefr_predictor/models/xgboost.joblib")
+File "C:\Users\15856\Documents\CEFR-English-Level-Predictor\cefr_predictor\inference.py", line 25, in __init__
+    self.model = load(model_path)
+File "C:\Users\15856\anaconda3\envs\Streamlit\lib\site-packages\joblib\numpy_pickle.py", line 658, in load
+    obj = _unpickle(fobj, filename, mmap_mode)
+File "C:\Users\15856\anaconda3\envs\Streamlit\lib\site-packages\joblib\numpy_pickle.py", line 577, in _unpickle
+    obj = unpickler.load()
+File "C:\Users\15856\anaconda3\envs\Streamlit\lib\pickle.py", line 1212, in load
+    dispatch[key[0]](self)
+File "C:\Users\15856\anaconda3\envs\Streamlit\lib\pickle.py", line 1537, in load_stack_global
+    self.append(self.find_class(module, name))
+File "C:\Users\15856\anaconda3\envs\Streamlit\lib\pickle.py", line 1579, in find_class
+    __import__(module, level=0)
+File "C:\Users\15856\Documents\CEFR-English-Level-Predictor\cefr_predictor\preprocessing.py", line 1, in <module>
+    from textstat import textstat

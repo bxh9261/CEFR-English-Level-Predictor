@@ -1,0 +1,27 @@
+Using robots instead of human won't reduce the employment 
+Table of Contents 
+Introduction		 
+Problem Definition 
+Proving Methods Generation and Evaluation 
+Results 
+Analysis and Proof 
+Conclusion 
+Reference 
+Appendixes 
+Introduction 
+Nowadays, the world is stepping into a new epoch, whose symbol is automotive and machine-intelligence. And the robots will play a more important role in the future. However, the main question whether the increase using of robot means the increase of unemployment is discussed seriously due to the development of the technology. Some people blamed the cause of the increasing unemployment rate to the increase using of robots. They thought that the unemployment is caused since the robots are taking human's jobs. Other people argued that the using of robots represented the advanced manufacturing method, which should be benefit to job market since the efficiency is increased greatly. So this report will give a persuasive answer to the main question posted above as well as explaining the data: The using of robots won't affect the rate of unemployment. 
+Problem Definition 
+In the past decade, especially 2000~2008, some people in US had a difficult time. Data showed that the unemployment of US increased from 4% to 6% as the booming of using robots, which increased from 7% to 12% in Fig 1. 
+Fig 1: The relationship between using of robots and the unemployment in US (2000~2008) 
+Some people connect these two phenomena together and make a judgment that the increase of unemployment is caused by the increase using of robots. They have positive-related relationship. However, this report holds a stand that these two things have no connection. The using of robots does not affect the rate of unemployment will be proved in the following report. 
+Proving Methods Generation and Evaluation 
+In order to get a logic and persuadable explanation, good methods should be introduced to prove the statement. Three basic types of means are used in this report: Survey, Interview and Academic Resources Reference. In this report, the results of the analysis will be displayed first and then conclusion will be drawn from the evidences of the results. 
+Survey 
+Survey is used to get a widely accepted conclusion. It is planned to make a survey based on no less than 60 people's view on this question so the sample of this survey is sufficient to get a more accurate answer to the question. Besides, these people should be linked with robots so that they can give a responsible answer. After conducting the survey, some charts are provided to make the result of the survey more clearly. The questions of the survey are listed in Appendix A and the analysis of data is shown in Appendix B. The weakness of this method is that it can't be very professional. 
+Interview 
+	Interview is used to get some professional answer from a specific expert. In this report, Mr. Yiming Ding, an undergraduate but experienced student who is conducting research regarding systems, measurement and control following Professor Euiwon Bae, a research assistant professor in Department of Mechanical Engineering was interviewed. Yiming Ding has quite a lot of experience in area of control so his view on robots is quite professional. This interview has been taken in Oct 20th, 2014 (9:34~9:42) in Yiming Ding's apartment (Williamsburg, 400 North River Road). The questions are listed in Appendix C. This method gives us a quite experienced view of the question listed above. But this method has its weak point: The answer only reflects one's view of these questions, even the answer may be quite close to the fact. 
+Academic Paper Reference 
+	Four articles are introduced to demonstrate the professional view of experts. Their authors are NBC NEWS (2012); Gorle & Clive (2011, p.1-64); Edler & Ribakova (1993, p.255-274); Levitan and Johnson (1982, p.10), respectively. They showed their view of related questions. This method is thought to be the most professional one. But compared to the interview, this method is not very flexible since after reading, there are always some questions that still need to be answered. 
+Total Evaluation of three methods 
+In order to rank the importance of these methods, a decision matrix is introduced in Fig 2. The interview method is used as datum to evaluate other two methods. 
+Fig 2: The decision matrix for three methods used in this report 

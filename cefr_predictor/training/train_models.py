@@ -6,12 +6,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder, StandardScaler, FunctionTransformer
-from cefr_predictor.preprocessing import generate_features
+from preprocessing import generate_features
 
 RANDOM_SEED = 0
 
 label_encoder = None
-
 
 def train(model):
     print(f"Training {model['name']}.")
@@ -50,7 +49,7 @@ def encode_labels(labels):
 
 def save_model(model, name):
     name = name.lower().replace(" ", "_")
-    file_name = f"cefr_predictor/models/{name}.joblib"
+    file_name = f"../../cefr_predictor/models/{name}_og.joblib"
     print(f"Saving {file_name}")
     dump(model, file_name)
 
@@ -75,8 +74,8 @@ models = [
     {"name": "SVC", "model": SVC(random_state=RANDOM_SEED, probability=True)},
 ]
 
-X_train, y_train = load_data("data/train.csv")
-X_test, y_test = load_data("data/test.csv")
+X_train, y_train = load_data("../../data/train_og.csv")
+X_test, y_test = load_data("../../data/test_og.csv")
 
 
 if __name__ == "__main__":

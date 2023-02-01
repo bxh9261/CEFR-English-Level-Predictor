@@ -1,9 +1,10 @@
 from textstat import textstat
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler, QuantileTransformer, LabelEncoder
-from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import MinMaxScaler, QuantileTransformer, LabelEncoder, StandardScaler, RobustScaler, robust_scale
+from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
+import numpy as np
 
-LABELS = ["A1", "A2", "B1", "B2", "C1", "C2"]
+LABELS = ["A2", "B1", "B2", "C2"]
 
 METRICS = [
     textstat.flesch_reading_ease,
@@ -22,13 +23,21 @@ METRICS = [
 class Predictor:
     def __init__(self, prediction_function):
         self.predict_func = prediction_function
-        self.scaler = MinMaxScaler(feature_range=(0, len(LABELS) - 1))
+        self.scaler = RobustScaler(with_centering=False)
 
     def predict(self, X):
         output = X.apply(self._predict_text)
+        print(output)
         output = pd.DataFrame(output)
-        scaled_outputs = pd.DataFrame(self.scaler.fit_transform(output))
-        return [round(p) for p in scaled_outputs[0]]
+        output = (robust_scale(output))
+        scaled_outputs = pd.DataFrame(self.scaler.fit_transform(output)+1.5)
+        print(scaled_outputs)
+        roundscale = [round(p) for p in scaled_outputs[0]]
+        #for idx, highest in enumerate(printer):
+           # if highest == 3:
+                #print(X[idx])
+        print(roundscale)
+        return roundscale
 
     def get_name(self):
         return self.predict_func.__name__
@@ -41,7 +50,7 @@ class Predictor:
 
 
 def load_data():
-    test = pd.read_csv("data/test.csv")
+    test = pd.read_csv("../icnale4_data/test.csv")
     X = test.text
     y = test.label
     encoder = LabelEncoder()
@@ -53,8 +62,12 @@ def calculate_metrics(X, y):
     for metric in METRICS:
         predictor = Predictor(metric)
         preds = predictor.predict(X)
-        score = accuracy_score(y, preds)
-        print(f"{predictor.get_name()}: {score}")
+        score2 = confusion_matrix(y, preds, labels=[0,1,2,3])
+        score1 = accuracy_score(y, preds)
+        score = f1_score(y, preds, labels=[0,1,2,3], average="weighted")
+        print(f"{predictor.get_name()} F1: {score}")
+        print(f"{predictor.get_name()}:\n {score2}")
+        print(f"{predictor.get_name()} Accuracy:\n {score1}")
 
 
 if __name__ == "__main__":

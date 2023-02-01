@@ -2,13 +2,14 @@ import numpy as np
 import pandas as pd
 from joblib import load
 from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
+from sklearn.metrics import confusion_matrix, accuracy_score, classification_report, f1_score
 
-LABELS = ["A1", "A2", "B1", "B2", "C1", "C2"]
+LABELS = ["A2", "B1.1", "B1.2", "B2", "C2"]
+LABELS_OG = ["A1", "A2", "B1", "B2", "C1", "C2"]
 
 
 def get_data():
-    test = pd.read_csv("data/test.csv")
+    test = pd.read_csv("../../data/test_og.csv")
     X = test["text"]
     y = test["label"]
     label_encoder = LabelEncoder()
@@ -18,9 +19,9 @@ def get_data():
 
 def get_confusion_matrix(y_true, y_pred):
     matrix = confusion_matrix(y_true, y_pred)
-    matrix_df = pd.DataFrame(matrix, columns=LABELS)
-    matrix_df["label"] = LABELS
-    return matrix_df[["label"] + LABELS]
+    matrix_df = pd.DataFrame(matrix, columns=LABELS_OG)
+    matrix_df["label"] = LABELS_OG
+    return matrix_df[["label"] + LABELS_OG]
 
 
 def get_top_k_accuracy(model, X, y_true, k=1):
@@ -38,8 +39,10 @@ def top_k_accuracy_score(y_true, y_proba, k=1):
 
 if __name__ == "__main__":
     X, y_true = get_data()
-    model = load("cefr_predictor/models/xgboost.joblib")
+    model = load("../../cefr_predictor/models/random_forest_og.joblib")
     y_pred = model.predict(X)
+    print(y_true, y_pred)
+    print(f1_score(y_true,y_pred,average="weighted"))
     print(get_confusion_matrix(y_true, y_pred))
-    print(classification_report(y_true, y_pred, target_names=LABELS))
+    print(classification_report(y_true, y_pred, target_names=LABELS_OG))
     print(get_top_k_accuracy(model, X, y_true, k=2))

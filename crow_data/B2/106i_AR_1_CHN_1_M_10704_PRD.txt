@@ -1,0 +1,41 @@
+Argumentative Essay Outline 
+November 16, 2015 
+Safety AI: A System Consist with Human Well Being 
+	Every innovative technology has potential danger and there is no exception for artificial intelligence. According to my research, Most of the significant dangers people have thought about artificial intelligence origin from mismatch between how machine value certain outcomes and how we, as humans, value those outcomes. 
+To eliminate risks caused by the mismatch, we have two major steps to go through. First of all, we should find out a general way, instead of specific ways, how we value things in decision making. Second, make sure that machine intelligence value outcomes in a similar way as we do from the beginning when they were built. 
+I. Artificial intelligence are machines that are able to solve uncertain problems. 
+a. Most of software or elementary AI we have today have specific goals to achieve. 
+i. Google Global Translator. 
+ii. Email spam hunter 
+b. Artificial intelligence are designed as tools and they should have the ability to work on unsolved problems that humans concern about. 
+c. Mature AI are not necessarily conscious. 
+i. We doesn't define intelligence in the same way that we define consciousness. 
+ii. Even humans with less than full intelligence were excluded from intelligent agents. 
+II. Human's fear of AI issue origin from the mismatch between how machine value certain outcomes and how we value those outcomes. 
+a. AI is a computer related system and is able to access some of the critical systems running based on the internet, for instance, financial system and military system. 
+i. The whole world would get down if AI attack the internet. 
+ii. When AIs are deeply inhuman, they would be seriously dangerous in the situation that they intend to get access to military resources. 
+b. Once the intelligence of AI surpass all those of humans, we will not be able to fight against them if they means to hurt human. 
+i. Intelligence power is not simple addition of quantities. 
+ii. To avoid this situation, the best we can do is to build two instead of one AI at the beginning and make sure at least one of them hold the principles that consists human well-being. 
+III. We should consider a general way, instead of specific ways, how we value things in decision making. 
+a. We must find a standard that we expect machines to follow when they are making decisions. 
+b. We don't need to worry about specific problems because human thoughts differs drastically from individual to individual. 
+i. Humans are culture based creatures. Our way of thinking differs significantly from different environment. 
+ii. Even though, we do have a lot of principle in common. For example, any ordinary people will not kill a person. 
+IV. After that, we want to make the machine intelligence we build have the same kind of decision making. 
+a. We should set several rules for them once we build an AI. 
+i. A preset of rules is just a basement, there is no way to force any intelligence to follow rules under every circumstance. We must keep it and cultivate them to view the rules as the overall principle when they make decisions. 
+b. We should keep the AI's evolvement with our world in a controllable range. We can let them help, but we must do the major part. 
+i. A number of experts must be trained to work on this issue, monitoring proper questions that we can ask AI for help. 
+ii. Abuse of AI because of human inertia must be avoided. 
+c. Once we've build artificial intelligences, we want them to be safe. 
+i. For safety, AIs should never have rights. 
+1. AIs are not necessarily conscious. 
+2. Even if they are, tools created by us and have the obligation to serve us like what they are expected to do. 
+3. Once AIs are potentially dangerous. We will never care about their rights because self-protecting is human intuition. 
+d. Some experts argues that the best way to eliminate the danger of AIs is to stop the research. 
+i. Humans will never stop innovation because of infinite desire towards knowing the unknowns. 
+1. We didn't stop the research in nuclear power which is catastrophically dangerous when errors occur. 
+2. We didn't stop the research in biochemistry even if it leads to really serious moral and ethical problems. 
+Word count: 730 

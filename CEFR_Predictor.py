@@ -3,8 +3,8 @@ from io import StringIO
 
 from cefr_predictor.inference import Model
 
-MAX_FILES = 5
-ALLOW_FILES_UPLOADS = False
+MAX_FILES = 100
+ALLOW_FILES_UPLOADS = True
 
 model = None
 

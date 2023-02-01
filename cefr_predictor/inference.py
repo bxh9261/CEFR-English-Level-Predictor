@@ -66,7 +66,7 @@ if __name__ == "__main__":
     if len(texts) == 0:
         raise Exception("Specify one or more documents to evaluate.")
 
-    model = Model("cefr_predictor/models/xgboost.joblib")
+    model = Model("models/xgboost.joblib")
     preds, probas = model.predict_decode(texts)
 
     results = []
