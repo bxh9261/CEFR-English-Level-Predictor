@@ -1,0 +1,26 @@
+AL Central: Blue Jays
+NL Central: Reds
+AL East: Rays
+NL East: Braves
+AL Midwest: Astros
+NL Midwest: Brewers
+AL West: Athletics
+NL West: Giants
+AL Wild Cards: White Sox, Red Sox
+NL Wild Cards: Dodgers, Cardinals
+
+AL:
+1. Rays
+2. Astros
+3. Blue Jays
+4. Mariners
+5. White Sox
+6. Red Sox
+
+NL: 
+1. Giants
+2. Brewers
+3. Braves
+4. Reds
+5. Dodgers
+6. Cardinals

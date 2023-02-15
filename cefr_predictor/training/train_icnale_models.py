@@ -10,14 +10,21 @@ from preprocessing import generate_features
 
 RANDOM_SEED = 0
 
-features = ["complexity", "pos", "syntax"]
-directories = ["icnale4_data", "crow_data"]
+features = ["All"]
+directories = ["icnale_data"]
 
 label_encoder = None
 
 def train(model, feature, directory):
-    X_train, y_train = load_data(f"../../{directory}/train.csv")
-    X_test, y_test = load_data(f"../../{directory}/test.csv")
+    X_train, y_train, rst_train = load_data(f"../../icnale_data/train_rst.csv")
+    X_test, y_test, rst_test = load_data(f"../../icnale_data/test_rst.csv")
+
+    if(feature == "All"):
+        for i,x in enumerate(X_train):
+            X_train[i] = x + rst_train[i]
+        for i,x in enumerate(X_test):
+            X_test[i] = x + rst_test[i]
+
 
     print(f"Training {model['name']}, for {directory} with {feature} features!")
     pipeline = build_pipeline(model["model"], feature)
@@ -40,9 +47,12 @@ def build_pipeline(model, feature):
 
 def load_data(path_to_data):
     data = pd.read_csv(path_to_data)
+    print(data)
     X = data.text.tolist()
     y = encode_labels(data.label)
-    return X, y
+    z = data.rsttree.tolist()
+
+    return X, y, z
 
 
 def encode_labels(labels):

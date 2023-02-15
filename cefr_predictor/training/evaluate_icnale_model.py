@@ -11,8 +11,10 @@ modeltypes = ["svc", "logistic_regression", "random_forest"]
 
 
 def get_data():
-    test = pd.read_csv("../../icnale_data/test.csv")
+    test = pd.read_csv("../../icnale_data/test_rst.csv")
     X = test["text"]
+    for i,x in enumerate(X):
+        X[i] = x + test["rsttree"][i]
     y = test["label"]
     label_encoder = LabelEncoder()
     y = label_encoder.fit_transform(y)
@@ -45,11 +47,12 @@ if __name__ == "__main__":
     for directory in directories:
         for modeltype in modeltypes:
             X, y_true = get_data()
-            model1 = load(f"../../cefr_predictor/models/featuremodels/{modeltype}_{directory}_complexity.joblib")
-            model2 = load(f"../../cefr_predictor/models/featuremodels/{modeltype}_{directory}_pos.joblib")
-            model3 = load(f"../../cefr_predictor/models/featuremodels/{modeltype}_{directory}_syntax.joblib")
+            #model1 = load(f"../../cefr_predictor/models/featuremodels/{modeltype}_{directory}_complexity.joblib")
+            #model2 = load(f"../../cefr_predictor/models/featuremodels/{modeltype}_{directory}_pos.joblib")
+            #model3 = load(f"../../cefr_predictor/models/featuremodels/{modeltype}_{directory}_syntax.joblib")
+            model4 = load(f"../../cefr_predictor/models/featuremodels/{modeltype}_{directory}_All.joblib")
 
-            models = [model1, model2, model3]
+            models = [model4]
             
             for model in models:
                 print(model)

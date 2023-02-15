@@ -29,21 +29,26 @@ POS_TAGS = [
     "SPACE",
 ]
 
+discourse_list = ['Elaboration', 'Same-Unit', 'Attribution', 'Joint', 'Enablement', 'Background', 'Comparison', 'Contrast', 'Manner-Means', 'Temporal', 'Condition', 'Summary', 'Cause', 'Topic-Comment', 'Evaluation', 'Explanation', 'Textual-Organization', 'Topic-Change']
 
 def generate_features(data, type="All"):
     """Generate features for a list of texts
-
+    
     Args:
         data (list[str]): the dataset to be processed.
 
     Returns:
         pandas.DataFrame: the processed features.
     """
+    #print(rst_data[0])
+    print(type)
     feature_data = []
 
     for text in data:
         features = preprocess_texts(text, type)
         feature_data.append(features)
+
+
 
     return pd.DataFrame(feature_data)
 
@@ -58,10 +63,17 @@ def preprocess_texts(text, type="All"):
         dict: a dictionary of feature names with associated values
 
     """
-    text = _simplify_punctuation(text)
+    text1 = text.split('{')[0]
+    try:
+        textrst = text.split('{')[1]
+    except:
+        print(textrst)
+
+    text = _simplify_punctuation(text1)
+    textrst = _simplify_punctuation(textrst)
 
     features = {}
-
+    
     features_complexity = {
         "flesch_reading_ease": textstat.flesch_reading_ease(text),
         "smog_index": textstat.smog_index(text),
@@ -82,10 +94,13 @@ def preprocess_texts(text, type="All"):
 
     features_pos = get_mean_pos_tags(text)
     
+    features_rst = get_mean_rst_tags(text, textrst)
+    
     if type == "All":
         features.update(features_syntax)
         features.update(features_complexity)
         features.update(features_pos)
+        features.update(features_rst)
 
     if type == "complexity":
         features.update(features_complexity)
@@ -95,6 +110,9 @@ def preprocess_texts(text, type="All"):
 
     if type == "pos":
         features.update(features_pos)
+    
+    if type == "rst":
+        features.update(features_rst)
 
     return features
 
@@ -102,7 +120,7 @@ def preprocess_texts(text, type="All"):
 def _simplify_punctuation(text):
     # from https://github.com/shivam5992/textstat/issues/77
 
-    text = re.sub(r"[,:;()\-]", " ", text)  # Override commas, colons, etc to spaces/
+    text = re.sub(r"[\{\},:;()\-]", " ", text)  # Override commas, colons, etc to spaces/
     text = re.sub(r"[\.!?]", ".", text)  # Change all terminators like ! and ? to "."
     text = re.sub(r"^\s+", "", text)  # Remove white space
     text = re.sub(r"[ ]*(\n|\r\n|\r)[ ]*", " ", text)  # Remove new lines
@@ -130,6 +148,100 @@ def _get_depth(token, depth=0):
     depths = [_get_depth(child, depth + 1) for child in token.children]
     return max(depths) if len(depths) > 0 else depth
 
+"""
+def get_mean_rst_tags(text):
+    sentences = text
+    mean_pos_tags = _get_rst_tag_counts(text)
+    return mean_pos_tags
+
+
+def _make_rst_tag_count_lists(sentences):
+    #print("make rst tag count lists")
+    sentence_counts = {}
+    pos_counts = _get_rst_tag_counts(sentences)
+    for key in pos_counts:
+        if key in sentence_counts:
+            sentence_counts[key].append(pos_counts[key])
+        else:
+            sentence_counts[key] = [pos_counts[key]]
+    return sentence_counts
+
+
+def _get_rst_tag_counts(doc):
+    rst_counts = {}
+    total = 0
+    #print("the third one")
+    for tag in discourse_list:
+        tag_count = doc.count(tag.lower())
+        if tag in rst_counts:
+            rst_counts[tag] += tag_count
+        else:
+            rst_counts[tag] = tag_count
+        total += tag_count
+    for tag in rst_counts:
+        if total != 0:
+            rst_counts[tag] /= total
+            #rst_counts[tag]*=100
+    return rst_counts
+
+
+def _calculate_mean_rst_per_tag(counts, num_sentences):
+    mean_pos_tags = {f"mean_{tag.lower()}": 0 for tag in discourse_list}
+    for key in counts:
+        if len(counts[key]) < num_sentences:
+            counts[key] += [0] * (num_sentences - len(counts[key]))
+        mean_value = round(np.mean(counts[key]), 2)
+        mean_pos_tags["mean_" + key.lower()] = mean_value
+    return mean_pos_tags
+    """
+def get_mean_rst_tags(text, textrst):
+    sentences = textrst
+    sentence_counts = _make_rst_tag_count_lists(sentences)
+    num_sentences = textstat.sentence_count(text)
+    mean_pos_tags = _calculate_mean_rst_per_tag(sentence_counts, num_sentences)
+    #print(mean_pos_tags)
+    return mean_pos_tags
+
+
+def _make_rst_tag_count_lists(sentences):
+    sentence_counts = {}
+    pos_counts = _get_rst_tag_counts(sentences)
+    for key in pos_counts:
+            if key in sentence_counts:
+                sentence_counts[key].append(pos_counts[key])
+            else:
+                sentence_counts[key] = [pos_counts[key]]
+    return sentence_counts
+
+
+def _get_rst_tag_counts(doc):
+    rst_counts = {}
+    total = 0
+    #print(doc)
+    for tag in discourse_list:
+        tag_count = doc.count(tag.lower())
+        if tag in rst_counts:
+            rst_counts[tag] += tag_count
+        else:
+            rst_counts[tag] = tag_count
+        total += tag_count
+        '''
+    for tag in rst_counts:
+        if total != 0:
+            rst_counts[tag] /= total
+            #rst_counts[tag]*=100
+        '''
+    return rst_counts
+
+
+def _calculate_mean_rst_per_tag(counts, num_sentences):
+    mean_pos_tags = {f"mean_{tag.lower()}": 0 for tag in discourse_list}
+    for key in counts:
+        if len(counts[key]) < num_sentences:
+            counts[key] += [0] * (num_sentences - len(counts[key]))
+        mean_value = round(np.mean(counts[key]), 2)
+        mean_pos_tags["mean_" + key.lower()] = mean_value
+    return mean_pos_tags
 
 def get_mean_pos_tags(text):
     """Calculate the mean for each type of POS tag in the text"""
@@ -137,6 +249,7 @@ def get_mean_pos_tags(text):
     sentence_counts = _make_pos_tag_count_lists(sentences)
     num_sentences = textstat.sentence_count(text)
     mean_pos_tags = _calculate_mean_per_tag(sentence_counts, num_sentences)
+    #print(mean_pos_tags)
     return mean_pos_tags
 
 
@@ -155,6 +268,7 @@ def _make_pos_tag_count_lists(sentences):
 def _get_pos_tag_counts(doc):
     pos_counts = {}
     pos_tags = [token.pos_ for token in doc]
+    #print(doc)
     for tag in pos_tags:
         if tag in pos_counts:
             pos_counts[tag] += 1
